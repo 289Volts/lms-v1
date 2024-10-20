@@ -136,6 +136,30 @@ export default {
             letterSpacing: "-1%",
           },
         ],
+        buttonL: [
+          "1.125rem",
+          {
+            fontWeight: 600,
+            lineHeight: "3.5rem",
+            letterSpacing: "-1%",
+          },
+        ],
+        buttonM: [
+          "1rem",
+          {
+            fontWeight: 600,
+            lineHeight: "3rem",
+            letterSpacing: "-1%",
+          },
+        ],
+        buttonS: [
+          "0.875rem",
+          {
+            fontWeight: 600,
+            lineHeight: "2.5rem",
+            letterSpacing: "-1%",
+          },
+        ],
       },
     },
   },
