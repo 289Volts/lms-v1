@@ -193,10 +193,34 @@ export default {
           },
         ],
         labelS: [
-          "0.5rem",
+          "0.625rem",
           {
             fontWeight: 500,
             lineHeight: "0.75rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyT600: [
+          "0.625rem",
+          {
+            fontWeight: 600,
+            lineHeight: "0.625rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyT500: [
+          "0.625rem",
+          {
+            fontWeight: 600,
+            lineHeight: "0.625rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyT400: [
+          "0.625rem",
+          {
+            fontWeight: 600,
+            lineHeight: "0.625rem",
             letterSpacing: "0",
           },
         ],
