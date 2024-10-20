@@ -248,6 +248,54 @@ export default {
             letterSpacing: "0",
           },
         ],
+        bodyM600: [
+          "0.875rem",
+          {
+            fontWeight: 600,
+            lineHeight: "1.25rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyM500: [
+          "0.875rem",
+          {
+            fontWeight: 500,
+            lineHeight: "1.25rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyM400: [
+          "0.875rem",
+          {
+            fontWeight: 400,
+            lineHeight: "1.375rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyL600: [
+          "1rem",
+          {
+            fontWeight: 600,
+            lineHeight: "1.375rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyL500: [
+          "1rem",
+          {
+            fontWeight: 500,
+            lineHeight: "1.375rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyL400: [
+          "1rem",
+          {
+            fontWeight: 400,
+            lineHeight: "1.5rem",
+            letterSpacing: "0",
+          },
+        ],
       },
     },
   },
