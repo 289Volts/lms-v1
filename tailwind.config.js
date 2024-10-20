@@ -5,6 +5,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
+      transparent: "transparent",
       white: "#fff",
       black: "#000",
       gray: {
@@ -77,6 +78,13 @@ export default {
     },
     // ...defaultTheme,
     extend: {
+      width: {
+        60: "60%",
+        70: "70%",
+        80: "80%",
+        90: "90%",
+        95: "95%",
+      },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
