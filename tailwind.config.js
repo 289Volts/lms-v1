@@ -296,6 +296,30 @@ export default {
             letterSpacing: "0",
           },
         ],
+        bodyXL600: [
+          "1.125rem",
+          {
+            fontWeight: 600,
+            lineHeight: "1.5rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyXL500: [
+          "1.125rem",
+          {
+            fontWeight: 500,
+            lineHeight: "1.5rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyXL400: [
+          "1.125rem",
+          {
+            fontWeight: 400,
+            lineHeight: "1.5rem",
+            letterSpacing: "0",
+          },
+        ],
       },
     },
   },
