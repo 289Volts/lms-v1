@@ -104,6 +104,38 @@ export default {
             letterSpacing: "-2%",
           },
         ],
+        heading1: [
+          "3rem",
+          {
+            fontWeight: 600,
+            lineHeight: "3.25rem",
+            letterSpacing: "-2%",
+          },
+        ],
+        heading2: [
+          "2.5rem",
+          {
+            fontWeight: 600,
+            lineHeight: "3rem",
+            letterSpacing: "-2%",
+          },
+        ],
+        heading3: [
+          "2rem",
+          {
+            fontWeight: 600,
+            lineHeight: "2.5rem",
+            letterSpacing: "-1%",
+          },
+        ],
+        heading4: [
+          "1.5rem",
+          {
+            fontWeight: 600,
+            lineHeight: "2rem",
+            letterSpacing: "-1%",
+          },
+        ],
       },
     },
   },
