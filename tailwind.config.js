@@ -160,6 +160,46 @@ export default {
             letterSpacing: "-1%",
           },
         ],
+        labelXXL: [
+          "1.125rem",
+          {
+            fontWeight: 500,
+            lineHeight: "100%",
+            letterSpacing: "0",
+          },
+        ],
+        labelXL: [
+          "1rem",
+          {
+            fontWeight: 500,
+            lineHeight: "100%",
+            letterSpacing: "0",
+          },
+        ],
+        labelL: [
+          "0.875rem",
+          {
+            fontWeight: 500,
+            lineHeight: "100%",
+            letterSpacing: "0",
+          },
+        ],
+        labelM: [
+          "0.75rem",
+          {
+            fontWeight: 500,
+            lineHeight: "0.75rem",
+            letterSpacing: "0",
+          },
+        ],
+        labelS: [
+          "0.5rem",
+          {
+            fontWeight: 500,
+            lineHeight: "0.75rem",
+            letterSpacing: "0",
+          },
+        ],
       },
     },
   },
