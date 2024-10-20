@@ -79,6 +79,32 @@ export default {
       fontFamily: {
         sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
       },
+      fontSize: {
+        display1: [
+          "5rem",
+          {
+            fontWeight: 600,
+            lineHeight: "5rem",
+            letterSpacing: "-2%",
+          },
+        ],
+        display2: [
+          "4.5rem",
+          {
+            fontWeight: 600,
+            lineHeight: "4.625rem",
+            letterSpacing: "-2%",
+          },
+        ],
+        display3: [
+          "4rem",
+          {
+            fontWeight: 600,
+            lineHeight: "4.25rem",
+            letterSpacing: "-2%",
+          },
+        ],
+      },
     },
   },
   plugins: [],
