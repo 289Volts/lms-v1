@@ -211,7 +211,7 @@ export default {
         bodyT500: [
           "0.625rem",
           {
-            fontWeight: 600,
+            fontWeight: 500,
             lineHeight: "0.625rem",
             letterSpacing: "0",
           },
@@ -219,8 +219,32 @@ export default {
         bodyT400: [
           "0.625rem",
           {
-            fontWeight: 600,
+            fontWeight: 400,
             lineHeight: "0.625rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyS600: [
+          "0.75rem",
+          {
+            fontWeight: 600,
+            lineHeight: "1rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyS500: [
+          "0.75rem",
+          {
+            fontWeight: 500,
+            lineHeight: "1rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyS400: [
+          "0.75rem",
+          {
+            fontWeight: 400,
+            lineHeight: "1rem",
             letterSpacing: "0",
           },
         ],
