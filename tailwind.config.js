@@ -320,6 +320,30 @@ export default {
             letterSpacing: "0",
           },
         ],
+        bodyXXL600: [
+          "1.25rem",
+          {
+            fontWeight: 600,
+            lineHeight: "1.625rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyXXL500: [
+          "1.25rem",
+          {
+            fontWeight: 500,
+            lineHeight: "1.625rem",
+            letterSpacing: "0",
+          },
+        ],
+        bodyXXL400: [
+          "1.25rem",
+          {
+            fontWeight: 400,
+            lineHeight: "1.625rem",
+            letterSpacing: "0",
+          },
+        ],
       },
     },
   },
