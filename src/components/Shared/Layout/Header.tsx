@@ -1,9 +1,14 @@
+import heartIcon from "@/assets/icons/CusHeartIcon.svg";
 import logo from "@/assets/images/logo.svg";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { Link } from "@tanstack/react-router";
 import { SearchIcon } from "lucide-react";
 import CusDropdown from "../CusDropdown";
+import CusCartIcon from "./CusCartIcon";
+import CusNotificationsIcon from "./CusNotificationsIcon";
 
 const headerLinks = [
   { name: "Home", link: "/" },
@@ -53,8 +58,8 @@ const Header = () => {
           />
         </div>
       </div>
-      <div className="mx-auto flex items-center justify-between px-8 py-7">
-        <div className="flex items-center">
+      <div className="mx-auto flex items-center justify-between px-8 py-6">
+        <div className="flex items-center gap-[3.125rem]">
           <img src={logo} alt="E-tutor" className="" />
           <div className="flex items-center gap-4">
             <CusDropdown
@@ -69,13 +74,56 @@ const Header = () => {
             <div className="relative flex items-center">
               <SearchIcon className="absolute left-5 h-5 w-5" />
               <Input
-                className="w-[424px] pl-[3.375rem]"
+                className="min-w-[350px] max-w-[424px] flex-1 pl-[3.375rem]"
                 placeholder="What do you want learn..."
               />
             </div>
           </div>
         </div>
-        <div className=""></div>
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6">
+            <Link
+              aria-label="My Notifications"
+              to="/students/$studentId"
+              search={{ tab: "message" }}
+              params={{ studentId: "12345" }}
+            >
+              <CusNotificationsIcon count={0} />
+            </Link>
+            <Link
+              to="/students/$studentId"
+              search={{ tab: "wishlist" }}
+              params={{ studentId: "12345" }}
+              className=""
+              aria-label="My Wishlist"
+            >
+              <img src={heartIcon} alt="" className="" />
+            </Link>
+            <Link
+              to="/students/$studentId/cart"
+              params={{ studentId: "12345" }}
+              className=""
+              aria-label="My Cart"
+            >
+              <CusCartIcon count={0} />
+            </Link>
+          </div>
+          {2 % 2 == 0 ? (
+            <Avatar className="h-12 w-12">
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          ) : (
+            <div className="space-x-3">
+              <Button variant="swp" size="md" className="capitalize">
+                create account
+              </Button>
+              <Button variant="pwp" size="md" className="capitalize">
+                sign in
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

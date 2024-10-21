@@ -13,6 +13,8 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
+import { Route as StudentsStudentIdIndexImport } from './routes/students/$studentId/index'
+import { Route as StudentsStudentIdCartImport } from './routes/students/$studentId/cart'
 
 // Create/Update Routes
 
@@ -23,6 +25,16 @@ const AboutRoute = AboutImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StudentsStudentIdIndexRoute = StudentsStudentIdIndexImport.update({
+  path: '/students/$studentId/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StudentsStudentIdCartRoute = StudentsStudentIdCartImport.update({
+  path: '/students/$studentId/cart',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -44,6 +56,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
+    '/students/$studentId/cart': {
+      id: '/students/$studentId/cart'
+      path: '/students/$studentId/cart'
+      fullPath: '/students/$studentId/cart'
+      preLoaderRoute: typeof StudentsStudentIdCartImport
+      parentRoute: typeof rootRoute
+    }
+    '/students/$studentId/': {
+      id: '/students/$studentId/'
+      path: '/students/$studentId'
+      fullPath: '/students/$studentId'
+      preLoaderRoute: typeof StudentsStudentIdIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -52,36 +78,55 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
+  '/students/$studentId': typeof StudentsStudentIdIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
+  '/students/$studentId': typeof StudentsStudentIdIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
+  '/students/$studentId/': typeof StudentsStudentIdIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/students/$studentId/cart'
+    | '/students/$studentId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/students/$studentId/cart' | '/students/$studentId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/students/$studentId/cart'
+    | '/students/$studentId/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  StudentsStudentIdCartRoute: typeof StudentsStudentIdCartRoute
+  StudentsStudentIdIndexRoute: typeof StudentsStudentIdIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  StudentsStudentIdCartRoute: StudentsStudentIdCartRoute,
+  StudentsStudentIdIndexRoute: StudentsStudentIdIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,7 +142,9 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/about",
+        "/students/$studentId/cart",
+        "/students/$studentId/"
       ]
     },
     "/": {
@@ -105,6 +152,12 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/students/$studentId/cart": {
+      "filePath": "students/$studentId/cart.tsx"
+    },
+    "/students/$studentId/": {
+      "filePath": "students/$studentId/index.tsx"
     }
   }
 }
