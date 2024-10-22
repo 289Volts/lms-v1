@@ -11,21 +11,45 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as AboutImport } from './routes/about'
-import { Route as IndexImport } from './routes/index'
+import { Route as PublicRouteImport } from './routes/_public/route'
+import { Route as AuthRouteImport } from './routes/_auth/route'
+import { Route as PublicIndexImport } from './routes/_public/index'
+import { Route as PublicAboutImport } from './routes/_public/about'
+import { Route as AuthSigninImport } from './routes/_auth/signin'
+import { Route as AuthLogoutImport } from './routes/_auth/logout'
 import { Route as StudentsStudentIdIndexImport } from './routes/students/$studentId/index'
 import { Route as StudentsStudentIdCartImport } from './routes/students/$studentId/cart'
 
 // Create/Update Routes
 
-const AboutRoute = AboutImport.update({
-  path: '/about',
+const PublicRouteRoute = PublicRouteImport.update({
+  id: '/_public',
   getParentRoute: () => rootRoute,
 } as any)
 
-const IndexRoute = IndexImport.update({
-  path: '/',
+const AuthRouteRoute = AuthRouteImport.update({
+  id: '/_auth',
   getParentRoute: () => rootRoute,
+} as any)
+
+const PublicIndexRoute = PublicIndexImport.update({
+  path: '/',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+
+const PublicAboutRoute = PublicAboutImport.update({
+  path: '/about',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+
+const AuthSigninRoute = AuthSigninImport.update({
+  path: '/signin',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
+
+const AuthLogoutRoute = AuthLogoutImport.update({
+  path: '/logout',
+  getParentRoute: () => AuthRouteRoute,
 } as any)
 
 const StudentsStudentIdIndexRoute = StudentsStudentIdIndexImport.update({
@@ -42,19 +66,47 @@ const StudentsStudentIdCartRoute = StudentsStudentIdCartImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/_auth/logout': {
+      id: '/_auth/logout'
+      path: '/logout'
+      fullPath: '/logout'
+      preLoaderRoute: typeof AuthLogoutImport
+      parentRoute: typeof AuthRouteImport
+    }
+    '/_auth/signin': {
+      id: '/_auth/signin'
+      path: '/signin'
+      fullPath: '/signin'
+      preLoaderRoute: typeof AuthSigninImport
+      parentRoute: typeof AuthRouteImport
+    }
+    '/_public/about': {
+      id: '/_public/about'
       path: '/about'
       fullPath: '/about'
-      preLoaderRoute: typeof AboutImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof PublicAboutImport
+      parentRoute: typeof PublicRouteImport
+    }
+    '/_public/': {
+      id: '/_public/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof PublicIndexImport
+      parentRoute: typeof PublicRouteImport
     }
     '/students/$studentId/cart': {
       id: '/students/$studentId/cart'
@@ -75,24 +127,62 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
+interface AuthRouteRouteChildren {
+  AuthLogoutRoute: typeof AuthLogoutRoute
+  AuthSigninRoute: typeof AuthSigninRoute
+}
+
+const AuthRouteRouteChildren: AuthRouteRouteChildren = {
+  AuthLogoutRoute: AuthLogoutRoute,
+  AuthSigninRoute: AuthSigninRoute,
+}
+
+const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
+  AuthRouteRouteChildren,
+)
+
+interface PublicRouteRouteChildren {
+  PublicAboutRoute: typeof PublicAboutRoute
+  PublicIndexRoute: typeof PublicIndexRoute
+}
+
+const PublicRouteRouteChildren: PublicRouteRouteChildren = {
+  PublicAboutRoute: PublicAboutRoute,
+  PublicIndexRoute: PublicIndexRoute,
+}
+
+const PublicRouteRouteWithChildren = PublicRouteRoute._addFileChildren(
+  PublicRouteRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '': typeof PublicRouteRouteWithChildren
+  '/logout': typeof AuthLogoutRoute
+  '/signin': typeof AuthSigninRoute
+  '/about': typeof PublicAboutRoute
+  '/': typeof PublicIndexRoute
   '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
   '/students/$studentId': typeof StudentsStudentIdIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '': typeof AuthRouteRouteWithChildren
+  '/logout': typeof AuthLogoutRoute
+  '/signin': typeof AuthSigninRoute
+  '/about': typeof PublicAboutRoute
+  '/': typeof PublicIndexRoute
   '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
   '/students/$studentId': typeof StudentsStudentIdIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/_auth': typeof AuthRouteRouteWithChildren
+  '/_public': typeof PublicRouteRouteWithChildren
+  '/_auth/logout': typeof AuthLogoutRoute
+  '/_auth/signin': typeof AuthSigninRoute
+  '/_public/about': typeof PublicAboutRoute
+  '/_public/': typeof PublicIndexRoute
   '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
   '/students/$studentId/': typeof StudentsStudentIdIndexRoute
 }
@@ -100,31 +190,45 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
+    | ''
+    | '/logout'
+    | '/signin'
     | '/about'
+    | '/'
     | '/students/$studentId/cart'
     | '/students/$studentId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/students/$studentId/cart' | '/students/$studentId'
+  to:
+    | ''
+    | '/logout'
+    | '/signin'
+    | '/about'
+    | '/'
+    | '/students/$studentId/cart'
+    | '/students/$studentId'
   id:
     | '__root__'
-    | '/'
-    | '/about'
+    | '/_auth'
+    | '/_public'
+    | '/_auth/logout'
+    | '/_auth/signin'
+    | '/_public/about'
+    | '/_public/'
     | '/students/$studentId/cart'
     | '/students/$studentId/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  PublicRouteRoute: typeof PublicRouteRouteWithChildren
   StudentsStudentIdCartRoute: typeof StudentsStudentIdCartRoute
   StudentsStudentIdIndexRoute: typeof StudentsStudentIdIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  AuthRouteRoute: AuthRouteRouteWithChildren,
+  PublicRouteRoute: PublicRouteRouteWithChildren,
   StudentsStudentIdCartRoute: StudentsStudentIdCartRoute,
   StudentsStudentIdIndexRoute: StudentsStudentIdIndexRoute,
 }
@@ -141,17 +245,41 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
-        "/about",
+        "/_auth",
+        "/_public",
         "/students/$studentId/cart",
         "/students/$studentId/"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
+    "/_auth": {
+      "filePath": "_auth/route.tsx",
+      "children": [
+        "/_auth/logout",
+        "/_auth/signin"
+      ]
     },
-    "/about": {
-      "filePath": "about.tsx"
+    "/_public": {
+      "filePath": "_public/route.tsx",
+      "children": [
+        "/_public/about",
+        "/_public/"
+      ]
+    },
+    "/_auth/logout": {
+      "filePath": "_auth/logout.tsx",
+      "parent": "/_auth"
+    },
+    "/_auth/signin": {
+      "filePath": "_auth/signin.tsx",
+      "parent": "/_auth"
+    },
+    "/_public/about": {
+      "filePath": "_public/about.tsx",
+      "parent": "/_public"
+    },
+    "/_public/": {
+      "filePath": "_public/index.tsx",
+      "parent": "/_public"
     },
     "/students/$studentId/cart": {
       "filePath": "students/$studentId/cart.tsx"

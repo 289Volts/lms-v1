@@ -1,8 +1,8 @@
 import heartIcon from "@/assets/icons/CusHeartIcon.svg";
 import logo from "@/assets/images/logo.svg";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { Link } from "@tanstack/react-router";
 import { SearchIcon } from "lucide-react";
@@ -18,47 +18,49 @@ const headerLinks = [
   { name: "Become an Instructor", link: "/become-instructor" },
 ];
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <header className="">
-      <div className="flex items-center justify-between bg-gray-900 px-8">
-        <nav className="">
-          <ul className="flex gap-2">
-            {headerLinks.map((link) => (
-              <li key={link.name} className="">
-                <Link
-                  to={link.link}
-                  className="text-bodyM500 inline-block border-t border-t-transparent p-4 text-gray-500 transition-colors duration-300"
-                  activeProps={{
-                    className: "!border-t-primary-500 !text-white",
-                  }}
-                >
-                  <span>{link.name}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="text-bodyM400 flex items-center gap-6 text-gray-400">
-          <CusDropdown
-            trigger={
-              <>
-                USD <CaretDownIcon className="h-5 w-5" />
-              </>
-            }
-            options={["USD", "EUR", "RUB"]}
-          />
-          <CusDropdown
-            trigger={
-              <>
-                English <CaretDownIcon className="h-5 w-5" />
-              </>
-            }
-            options={["English", "French", "Spanish"]}
-          />
+      <div className="bg-gray-900">
+        <div className="w-95 mx-auto flex items-center justify-between">
+          <nav className="">
+            <ul className="flex gap-2">
+              {headerLinks.map((link) => (
+                <li key={link.name} className="">
+                  <Link
+                    to={link.link}
+                    className="text-bodyM500 inline-block border-t border-t-transparent p-4 text-gray-500 transition-colors duration-300"
+                    activeProps={{
+                      className: "!border-t-primary-500 !text-white",
+                    }}
+                  >
+                    <span>{link.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="text-bodyM400 flex items-center gap-6 text-gray-400">
+            <CusDropdown
+              trigger={
+                <>
+                  USD <CaretDownIcon className="h-5 w-5" />
+                </>
+              }
+              options={["USD", "EUR", "RUB"]}
+            />
+            <CusDropdown
+              trigger={
+                <>
+                  English <CaretDownIcon className="h-5 w-5" />
+                </>
+              }
+              options={["English", "French", "Spanish"]}
+            />
+          </div>
         </div>
       </div>
-      <div className="mx-auto flex items-center justify-between px-8 py-6">
+      <div className="w-95 mx-auto flex items-center justify-between py-6">
         <div className="flex items-center gap-[3.125rem]">
           <img src={logo} alt="E-tutor" className="" />
           <div className="flex items-center gap-4">
@@ -108,8 +110,9 @@ const Header = () => {
               <CusCartIcon count={0} />
             </Link>
           </div>
-          {2 % 2 == 0 ? (
-            <Avatar className="h-12 w-12">
+
+          {user ? (
+            <Avatar className="h-12 w-12 overflow-hidden rounded-full">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
