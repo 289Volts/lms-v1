@@ -12,7 +12,6 @@ export const Route = createFileRoute("/_public")({
 
 function LayoutComponent() {
   const user = Route.useLoaderData();
-  console.log(user);
   return (
     <>
       <Header user={user} />

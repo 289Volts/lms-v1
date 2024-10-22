@@ -1,3 +1,4 @@
+import AuthFooter from "@/components/Shared/Layout/AuthFooter";
 import AuthHeader from "@/components/Shared/Layout/AuthHeader";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
@@ -10,6 +11,7 @@ function LayoutComponent() {
     <>
       <AuthHeader />
       <Outlet />
+      <AuthFooter />
     </>
   );
 }
