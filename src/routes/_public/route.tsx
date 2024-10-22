@@ -1,3 +1,4 @@
+import Footer from "@/components/Shared/Layout/Footer";
 import Header from "@/components/Shared/Layout/Header";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
@@ -16,6 +17,7 @@ function LayoutComponent() {
     <>
       <Header user={user} />
       <Outlet />
+      <Footer />
     </>
   );
 }

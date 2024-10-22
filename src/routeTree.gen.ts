@@ -16,7 +16,7 @@ import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as PublicIndexImport } from './routes/_public/index'
 import { Route as PublicAboutImport } from './routes/_public/about'
 import { Route as AuthSigninImport } from './routes/_auth/signin'
-import { Route as AuthLogoutImport } from './routes/_auth/logout'
+import { Route as AuthRegisterImport } from './routes/_auth/register'
 import { Route as StudentsStudentIdIndexImport } from './routes/students/$studentId/index'
 import { Route as StudentsStudentIdCartImport } from './routes/students/$studentId/cart'
 
@@ -47,8 +47,8 @@ const AuthSigninRoute = AuthSigninImport.update({
   getParentRoute: () => AuthRouteRoute,
 } as any)
 
-const AuthLogoutRoute = AuthLogoutImport.update({
-  path: '/logout',
+const AuthRegisterRoute = AuthRegisterImport.update({
+  path: '/register',
   getParentRoute: () => AuthRouteRoute,
 } as any)
 
@@ -80,11 +80,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicRouteImport
       parentRoute: typeof rootRoute
     }
-    '/_auth/logout': {
-      id: '/_auth/logout'
-      path: '/logout'
-      fullPath: '/logout'
-      preLoaderRoute: typeof AuthLogoutImport
+    '/_auth/register': {
+      id: '/_auth/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof AuthRegisterImport
       parentRoute: typeof AuthRouteImport
     }
     '/_auth/signin': {
@@ -128,12 +128,12 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface AuthRouteRouteChildren {
-  AuthLogoutRoute: typeof AuthLogoutRoute
+  AuthRegisterRoute: typeof AuthRegisterRoute
   AuthSigninRoute: typeof AuthSigninRoute
 }
 
 const AuthRouteRouteChildren: AuthRouteRouteChildren = {
-  AuthLogoutRoute: AuthLogoutRoute,
+  AuthRegisterRoute: AuthRegisterRoute,
   AuthSigninRoute: AuthSigninRoute,
 }
 
@@ -157,7 +157,7 @@ const PublicRouteRouteWithChildren = PublicRouteRoute._addFileChildren(
 
 export interface FileRoutesByFullPath {
   '': typeof PublicRouteRouteWithChildren
-  '/logout': typeof AuthLogoutRoute
+  '/register': typeof AuthRegisterRoute
   '/signin': typeof AuthSigninRoute
   '/about': typeof PublicAboutRoute
   '/': typeof PublicIndexRoute
@@ -167,7 +167,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '': typeof AuthRouteRouteWithChildren
-  '/logout': typeof AuthLogoutRoute
+  '/register': typeof AuthRegisterRoute
   '/signin': typeof AuthSigninRoute
   '/about': typeof PublicAboutRoute
   '/': typeof PublicIndexRoute
@@ -179,7 +179,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_auth': typeof AuthRouteRouteWithChildren
   '/_public': typeof PublicRouteRouteWithChildren
-  '/_auth/logout': typeof AuthLogoutRoute
+  '/_auth/register': typeof AuthRegisterRoute
   '/_auth/signin': typeof AuthSigninRoute
   '/_public/about': typeof PublicAboutRoute
   '/_public/': typeof PublicIndexRoute
@@ -191,7 +191,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | ''
-    | '/logout'
+    | '/register'
     | '/signin'
     | '/about'
     | '/'
@@ -200,7 +200,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | ''
-    | '/logout'
+    | '/register'
     | '/signin'
     | '/about'
     | '/'
@@ -210,7 +210,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_auth'
     | '/_public'
-    | '/_auth/logout'
+    | '/_auth/register'
     | '/_auth/signin'
     | '/_public/about'
     | '/_public/'
@@ -254,7 +254,7 @@ export const routeTree = rootRoute
     "/_auth": {
       "filePath": "_auth/route.tsx",
       "children": [
-        "/_auth/logout",
+        "/_auth/register",
         "/_auth/signin"
       ]
     },
@@ -265,8 +265,8 @@ export const routeTree = rootRoute
         "/_public/"
       ]
     },
-    "/_auth/logout": {
-      "filePath": "_auth/logout.tsx",
+    "/_auth/register": {
+      "filePath": "_auth/register.tsx",
       "parent": "/_auth"
     },
     "/_auth/signin": {

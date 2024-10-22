@@ -4,11 +4,15 @@
 
 @layer base {
   html {
-    @apply font-sans;
+    @apply scroll-smooth font-sans;
   }
 
   * {
     @apply border-border;
+  }
+
+  #root {
+    @apply grid min-h-screen grid-rows-[auto_1fr_auto];
   }
 
   :root {
@@ -110,5 +114,11 @@
     --chart-4: 280 65% 60%;
 
     --chart-5: 340 75% 55%;
+  }
+}
+
+@layer utilities {
+  .contain {
+    @apply mx-auto max-w-[1440px];
   }
 }
