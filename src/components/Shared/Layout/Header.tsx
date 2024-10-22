@@ -1,5 +1,4 @@
 import heartIcon from "@/assets/icons/CusHeartIcon.svg";
-import logo from "@/assets/images/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
@@ -9,6 +8,7 @@ import { SearchIcon } from "lucide-react";
 import CusDropdown from "../CusDropdown";
 import CusCartIcon from "./CusCartIcon";
 import CusNotificationsIcon from "./CusNotificationsIcon";
+import Logo from "./Logo";
 
 const headerLinks = [
   { name: "Home", link: "/" },
@@ -18,7 +18,7 @@ const headerLinks = [
   { name: "Become an Instructor", link: "/become-instructor" },
 ];
 
-const Header = ({ user }) => {
+const Header = ({ user }: { user?: unknown }) => {
   return (
     <header className="">
       <div className="bg-gray-900">
@@ -62,7 +62,7 @@ const Header = ({ user }) => {
       </div>
       <div className="w-95 mx-auto flex items-center justify-between py-6">
         <div className="flex items-center gap-[3.125rem]">
-          <img src={logo} alt="E-tutor" className="" />
+          <Logo />
           <div className="flex items-center gap-4">
             <CusDropdown
               triggerClasses="text-bodyL400 text-gray-700 justify-between gap-[5.875rem] py-3 px-[1.125rem] border border-gray-100"
