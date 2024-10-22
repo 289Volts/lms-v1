@@ -98,7 +98,7 @@ const Footer = () => {
           </div>
         </div>
       </div>{" "}
-      <div className="border-y border-x-gray-100/20">
+      <div className="border-y border-y-gray-100/20">
         <div className="contain flex items-center justify-between px-[10%] py-20">
           <div className="w-[28%]">
             <Link to="/">
@@ -120,7 +120,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex gap-9">
-            <div className="flex gap-10">
+            <div className="flex gap-12">
               <FooterNavLinks title="Top 4 Categories" data={categories} />
               <FooterNavLinks title="Quick Links" data={quickLinks} />
               <div className="">
@@ -130,7 +130,7 @@ const Footer = () => {
                     {support.map((link, index) => (
                       <li
                         key={index}
-                        className="group flex w-fit border-b-2 border-b-transparent py-2 pb-1 text-bodyM400 text-gray-500 transition-colors duration-300 hover:border-b-primary-500"
+                        className="group flex w-fit cursor-pointer border-b-2 border-b-transparent py-2 pb-1 text-bodyM400 text-gray-500 transition-colors duration-300 hover:border-b-primary-500"
                       >
                         <span>{link}</span>
                         <img
@@ -151,6 +151,13 @@ const Footer = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="contain px-[10%] py-9">
+        <p className="text-bodyM400 text-[#8C94A3]">
+          &copy; 2024. Designed by{" "}
+          <span className="text-white">Templatecookie</span>. All rights
+          reserved
+        </p>
       </div>
     </footer>
   );
