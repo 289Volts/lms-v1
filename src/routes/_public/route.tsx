@@ -16,7 +16,7 @@ function LayoutComponent() {
     <>
       <Header user={user} />
       <Outlet />
-      <Footer />
+      <Footer page="public" />
     </>
   );
 }

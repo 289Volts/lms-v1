@@ -5,6 +5,7 @@ import rightArr from "@/assets/icons/rightArr.svg";
 import twitter from "@/assets/icons/twitter.svg";
 import youtube from "@/assets/icons/youtube.svg";
 import appstore from "@/assets/images/appstore.png";
+import footerImg from "@/assets/images/footerImg.png";
 import logo from "@/assets/images/footerLogo.svg";
 import playstore from "@/assets/images/playstore.png";
 import { Link } from "@tanstack/react-router";
@@ -59,45 +60,80 @@ const FooterNavLinks = ({
     </div>
   );
 };
-const Footer = () => {
+const Footer = ({ page = "public" }: { page?: "public" | "instructor" }) => {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="contain flex items-center justify-between gap-32 px-[10%] py-[100px]">
-        <div className="w-fit space-y-8">
-          <h2 className="text-heading2">
-            Start learning with 67.1k
-            <br /> students around the world.
-          </h2>
-          <div className="space-x-4">
-            <Link
-              to="/register"
-              className="inline-block bg-primary-500 px-6 text-buttonM capitalize text-white"
-            >
-              join the family
-            </Link>
-            <Link
-              to="/courses"
-              className="inline-block bg-white/5 px-6 text-buttonM capitalize text-white"
-            >
-              browse all courses
-            </Link>
+      {page === "public" ? (
+        <div className="contain flex items-center justify-between gap-32 px-[10%] py-[100px]">
+          <div className="w-fit space-y-8">
+            <h2 className="text-heading2">
+              Start learning with 67.1k
+              <br /> students around the world.
+            </h2>
+            <div className="space-x-4">
+              <Link
+                to="/register"
+                className="inline-block bg-primary-500 px-6 text-buttonM capitalize text-white"
+              >
+                join the family
+              </Link>
+              <Link
+                to="/courses"
+                className="inline-block bg-white/5 px-6 text-buttonM capitalize text-white"
+              >
+                browse all courses
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center gap-12">
+            <div className="flex flex-col">
+              <span className="text-heading2">6.3k</span>
+              <span className="text-bodyL500 text-gray-300">
+                Online courses
+              </span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-heading2">6.3k</span>
+              <span className="text-bodyL500 text-gray-300">
+                Online courses
+              </span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-heading2">6.3k</span>
+              <span className="text-bodyL500 text-gray-300">
+                Online courses
+              </span>
+            </div>
           </div>
         </div>
-        <div className="flex items-center gap-12">
-          <div className="flex flex-col">
-            <span className="text-heading2">6.3k</span>
-            <span className="text-bodyL500 text-gray-300">Online courses</span>
+      ) : page === "instructor" ? (
+        <div className="contain flex items-center justify-between gap-32 px-[10%] py-[100px]">
+          <div className="w-[40%] space-y-10">
+            <div className="space-y-6">
+              <h2 className="text-heading2">
+                Start teaching with us
+                <br /> and inspire others.
+              </h2>
+              <p className="text-bodyL400 text-gray-300">
+                Become an instructor & start teaching with 26k certified
+                instructors. Create a success story with 67.1k Students — Grow
+                yourself with 71 countries.
+              </p>
+            </div>
+            <div className="space-x-4">
+              <Link
+                to="/register"
+                className="inline-block bg-primary-500 px-6 text-buttonM capitalize text-white"
+              >
+                register now
+              </Link>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <span className="text-heading2">6.3k</span>
-            <span className="text-bodyL500 text-gray-300">Online courses</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-heading2">6.3k</span>
-            <span className="text-bodyL500 text-gray-300">Online courses</span>
+          <div className="">
+            <img src={footerImg} alt="" className="" />
           </div>
         </div>
-      </div>{" "}
+      ) : null}{" "}
       <div className="border-y border-y-gray-100/20">
         <div className="contain flex items-center justify-between px-[10%] py-20">
           <div className="w-[28%]">
