@@ -11,12 +11,7 @@ const buttonVariants = cva(
       variant: {
         pwp: "bg-primary-500 text-white lg:hover:bg-primary-600 disabled:bg-primary-200",
         swp: "bg-primary-100 text-primary-500 lg:hover:bg-primary-200 lg:hover:text-primary-600 disabled:bg-primary-100 lg:disabled:text-primary-300",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },

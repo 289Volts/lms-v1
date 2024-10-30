@@ -1,12 +1,19 @@
-const CusCartIcon = ({ count = 0 }: { count?: number }) => {
+const CusCartIcon = ({
+  count = 0,
+  className,
+}: {
+  count?: number;
+  className?: string;
+}) => {
   return (
     <div className="relative">
       {count > 0 && (
-        <span className="bg-primary-500 text-bodyT500 absolute right-[-3px] top-[-3px] h-4 w-4 rounded-full py-[3px] text-center text-white">
+        <span className="absolute right-[-3px] top-[-3px] h-4 w-4 rounded-full bg-primary-500 py-[3px] text-center text-bodyT500 text-white">
           {count}
         </span>
       )}
       <svg
+        className={className}
         width="24"
         height="24"
         viewBox="0 0 24 24"

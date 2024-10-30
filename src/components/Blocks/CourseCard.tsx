@@ -1,7 +1,9 @@
 import star from "@/assets/icons/star.svg";
 import user from "@/assets/icons/user.svg";
 import { Badge, badgeVariants } from "@/components/ui/badge";
+import { formatNumber } from "@/utils/formatNumber";
 import { VariantProps } from "class-variance-authority";
+import DetailHoverCard from "./DetailHoverCard";
 
 type TCourseCardProps = {
   img: string;
@@ -19,6 +21,7 @@ const GRID_LOOKUP: Record<number, string> = {
   4: "px-[1.125rem]",
   5: "px-3.5",
 };
+
 const CourseCard = ({
   img,
   badge,
@@ -30,7 +33,23 @@ const CourseCard = ({
   grid,
 }: TCourseCardProps) => {
   return (
-    <div className="border border-gray-100 text-bodyM500">
+    <div className="group relative border border-gray-100 text-bodyM500">
+      <DetailHoverCard
+        title={title}
+        price={price}
+        badge={badge}
+        badgeColor={badgeColor}
+        studentsCount={studentsCount}
+        benefits={["test", "test"]}
+        courseId={"test"}
+        difficulty={"test"}
+        duration={"test"}
+        instructor={"test"}
+        rating={"test"}
+        ratingsCount={1000}
+        discount={10}
+        avatar={""}
+      />
       <div className="">
         <img src={img} alt="" className="w-full" />
       </div>
@@ -57,7 +76,7 @@ const CourseCard = ({
         </div>
         <div className="flex items-center gap-1">
           <img src={user} alt="" className={`${grid !== 3 ? "h-5 w-5" : ""}`} />
-          <span className="">{studentsCount} students</span>
+          <span className="">{formatNumber(studentsCount)} students</span>
         </div>
       </div>
     </div>
