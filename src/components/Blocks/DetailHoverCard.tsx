@@ -13,7 +13,7 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { CourseDetailWithIcon } from "./CourseDetailWithIcon";
 
-type TDetailHoverCardProps = {
+export type TDetailHoverCardProps = {
   courseId: string;
   badge: string;
   badgeColor: VariantProps<typeof Badge>["variant"];
@@ -52,10 +52,10 @@ const DetailHoverCard = ({
       ? instructor.split(" ")[0][0] + instructor.split(" ")[1][0]
       : instructor[0].repeat(2);
   return (
-    <div className="absolute left-[97%] top-[-30%] z-50 hidden bg-white py-5 shadow-sm group-hover:block">
+    <div className="absolute left-[97%] top-[-30%] z-50 hidden max-w-[424px] bg-white py-5 shadow-sm group-hover:block">
       <div className="px-5">
         <Badge variant={badgeColor}>{badge}</Badge>
-        <h3 className="text mt-2.5 text-bodyXL500 text-gray-900">{title}</h3>
+        <h3 className="mt-2.5 text-bodyXL500 text-gray-900">{title}</h3>
       </div>
 
       <div className="mt-4 space-y-5 px-5">

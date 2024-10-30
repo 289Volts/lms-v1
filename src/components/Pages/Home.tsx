@@ -1,6 +1,7 @@
 import courseImg from "@/assets/images/courseImg1.png";
 import { ComponentProps } from "react";
 import CourseCard from "../Blocks/CourseCard";
+import LongCourseCard from "../Blocks/LongCourseCard";
 
 const courseDetails: ComponentProps<typeof CourseCard> = {
   badge: "Development",
@@ -14,8 +15,22 @@ const courseDetails: ComponentProps<typeof CourseCard> = {
 };
 const Home = () => {
   return (
-    <div className="grid grid-cols-5">
+    <div className="gri flex grid-cols-5 gap-4">
       <CourseCard {...courseDetails} />
+      <LongCourseCard
+        avatar={""}
+        instructor={"test"}
+        difficulty={"test"}
+        discount={10}
+        title={"Introduction to Web Development"}
+        badge={"test"}
+        badgeColor={"primary"}
+        duration={"test"}
+        price={57}
+        ratingsCount={1000}
+        rating={"test"}
+        studentsCount={265700}
+      />
     </div>
   );
 };
