@@ -144,11 +144,11 @@ const DetailHoverCard = ({
           <img src={cart} alt="" className="mr-3" />
           <span className="text-buttonM">Add to cart</span>
         </Button>
-        <Button variant="swp" className="w-full">
+        <Button variant="swp" size="md" className="w-full">
           <Link
             to="/courses/:id"
             params={{ id: courseId }}
-            className="text-buttonM capitalize text-primary-500"
+            className="capitalize text-primary-500"
           >
             course detail
           </Link>

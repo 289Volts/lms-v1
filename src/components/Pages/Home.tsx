@@ -1,7 +1,7 @@
 import courseImg from "@/assets/images/courseImg1.png";
 import { ComponentProps } from "react";
 import CourseCard from "../Blocks/CourseCard";
-import LongCourseCard from "../Blocks/LongCourseCard";
+import InstructorCard from "../Blocks/InstructorCard";
 
 const courseDetails: ComponentProps<typeof CourseCard> = {
   badge: "Development",
@@ -15,9 +15,17 @@ const courseDetails: ComponentProps<typeof CourseCard> = {
 };
 const Home = () => {
   return (
-    <div className="gri flex grid-cols-5 gap-4">
+    <div className="flex gap-4">
       <CourseCard {...courseDetails} />
-      <LongCourseCard
+      <InstructorCard
+        studentsCount={265700}
+        image=""
+        name="test"
+        role="test"
+        rating={4.6}
+        hasBtn
+      />
+      {/* <LongCourseCard
         avatar={""}
         instructor={"test"}
         difficulty={"test"}
@@ -30,7 +38,7 @@ const Home = () => {
         ratingsCount={1000}
         rating={"test"}
         studentsCount={265700}
-      />
+      /> */}
     </div>
   );
 };
