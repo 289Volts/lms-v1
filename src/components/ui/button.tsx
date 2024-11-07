@@ -12,7 +12,7 @@ const buttonVariants = cva(
         pwp: "bg-primary-500 text-white lg:hover:bg-primary-600 disabled:bg-primary-200",
         swp: "bg-primary-100 text-primary-500 lg:hover:bg-primary-200 lg:hover:text-primary-600 disabled:bg-primary-100 lg:disabled:text-primary-300",
 
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost: "",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

@@ -78,6 +78,12 @@ export default {
     },
     // ...defaultTheme,
     extend: {
+      boxShadow: {
+        successToast: "0 4px 16px 0px rgba(7, 38, 10, 0.12)",
+        errorToast: "0 4px 16px 0px rgba(45, 14, 14, 0.12)",
+        warningToast: "0 4px 16px 0px rgba(51, 39, 6, 0.12)",
+        infoToast: "0 4px 16px 0px rgba(29, 32, 38, 0.12)",
+      },
       width: {
         60: "60%",
         70: "70%",
