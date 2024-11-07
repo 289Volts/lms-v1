@@ -93,16 +93,14 @@ const Footer = ({ page = "public" }: { page?: "public" | "instructor" }) => {
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="text-heading2">6.3k</span>
+              <span className="text-heading2">26k</span>
               <span className="text-bodyL500 text-gray-300">
-                Online courses
+                Certified Instructors
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="text-heading2">6.3k</span>
-              <span className="text-bodyL500 text-gray-300">
-                Online courses
-              </span>
+              <span className="text-heading2">99%</span>
+              <span className="text-bodyL500 text-gray-300">Success Rate</span>
             </div>
           </div>
         </div>
