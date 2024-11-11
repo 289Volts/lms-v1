@@ -1,9 +1,9 @@
 import courseImg from "@/assets/images/courseImg1.png";
+import heroImg from "@/assets/images/heroImg.png";
+import { Link } from "@tanstack/react-router";
 import { ComponentProps } from "react";
-import { toast } from "sonner";
+import CategoryRect from "../Blocks/CategoryRect";
 import CourseCard from "../Blocks/CourseCard";
-import ToastOutput from "../Blocks/CusToast";
-import InstructorCard from "../Blocks/InstructorCard";
 
 const courseDetails: ComponentProps<typeof CourseCard> = {
   badge: "Development",
@@ -16,50 +16,73 @@ const courseDetails: ComponentProps<typeof CourseCard> = {
   grid: 5,
 };
 const Home = () => {
-  requestAnimationFrame(() => {
-    toast.custom(
-      (t) => (
-        <ToastOutput
-          type="info"
-          message="Lorem ipsum dolor"
-          fn={() => toast.dismiss(t)}
-        />
-      ),
-      {
-        unstyled: true,
-        classNames: {
-          toast: "w-max translate-x-[-3rem]",
-        },
-      },
-    );
-  });
-  return (
-    <div className="flex gap-4">
-      <CourseCard {...courseDetails} />
-      <InstructorCard
-        studentsCount={265700}
-        image=""
-        name="test"
-        role="test"
-        rating={4.6}
-        hasBtn
-      />
+  // requestAnimationFrame(() => {
+  //   toast.custom(
+  //     (t) => (
+  //       <ToastOutput
+  //         type="info"
+  //         message="Lorem ipsum dolor"
+  //         fn={() => toast.dismiss(t)}
+  //       />
+  //     ),
+  //     {
+  //       unstyled: true,
+  //       classNames: {
+  //         toast: "w-max translate-x-[-3rem]",
+  //       },
+  //     },
+  //   );
+  // });
 
-      {/* <LongCourseCard
-        avatar={""}
-        instructor={"test"}
-        difficulty={"test"}
-        discount={10}
-        title={"Introduction to Web Development"}
-        badge={"test"}
-        badgeColor={"primary"}
-        duration={"test"}
-        price={57}
-        ratingsCount={1000}
-        rating={"test"}
-        studentsCount={265700}
-      /> */}
-    </div>
+  const categoriesBgColors = [
+    "bg-success-100",
+    "bg-secondary-100",
+    "bg-primary-100",
+    "bg-warning-100",
+    "bg-gray-50",
+    "bg-error-100",
+  ];
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  return (
+    <main className="">
+      <section className="flex items-center justify-between gap-[102px] pl-[300px] text-gray-900">
+        <div className="space-y-10">
+          <h1 className="text-display2">
+            Learn from experts anytime, anywhere
+          </h1>
+          <p className="text-bodyXXXL text-gray-700">
+            Our mission is to help people to find the best course online and
+            learn with expert anytime, anywhere.
+          </p>
+          <Link
+            to="/signin"
+            className="inline-block bg-primary-500 px-8 text-buttonL capitalize text-white"
+          >
+            create account
+          </Link>
+        </div>
+        <div className="h-full">
+          <img src={heroImg} alt="" className="" />
+        </div>
+      </section>
+      <section className="flex flex-col items-center justify-center gap-10 py-20">
+        <h2 className="text-heading2">Browse top category</h2>
+        <div className="grid grid-cols-4 gap-6">
+          {[...Array(12)].map((_, i) => (
+            <CategoryRect
+              title="Development"
+              courses={120000}
+              bgColor={
+                categoriesBgColors[getRandomInt(categoriesBgColors.length)]
+              }
+              icon=""
+            />
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
 

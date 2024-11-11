@@ -16,6 +16,7 @@ import { Route as PublicRouteImport } from './routes/_public/route'
 import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as InstructorsIndexImport } from './routes/instructors/index'
 import { Route as PublicIndexImport } from './routes/_public/index'
+import { Route as PublicCoursesImport } from './routes/_public/courses'
 import { Route as PublicAboutImport } from './routes/_public/about'
 import { Route as AuthSigninImport } from './routes/_auth/signin'
 import { Route as AuthRegisterImport } from './routes/_auth/register'
@@ -46,6 +47,11 @@ const InstructorsIndexRoute = InstructorsIndexImport.update({
 
 const PublicIndexRoute = PublicIndexImport.update({
   path: '/',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+
+const PublicCoursesRoute = PublicCoursesImport.update({
+  path: '/courses',
   getParentRoute: () => PublicRouteRoute,
 } as any)
 
@@ -120,6 +126,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicAboutImport
       parentRoute: typeof PublicRouteImport
     }
+    '/_public/courses': {
+      id: '/_public/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof PublicCoursesImport
+      parentRoute: typeof PublicRouteImport
+    }
     '/_public/': {
       id: '/_public/'
       path: '/'
@@ -169,11 +182,13 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 
 interface PublicRouteRouteChildren {
   PublicAboutRoute: typeof PublicAboutRoute
+  PublicCoursesRoute: typeof PublicCoursesRoute
   PublicIndexRoute: typeof PublicIndexRoute
 }
 
 const PublicRouteRouteChildren: PublicRouteRouteChildren = {
   PublicAboutRoute: PublicAboutRoute,
+  PublicCoursesRoute: PublicCoursesRoute,
   PublicIndexRoute: PublicIndexRoute,
 }
 
@@ -198,6 +213,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof AuthRegisterRoute
   '/signin': typeof AuthSigninRoute
   '/about': typeof PublicAboutRoute
+  '/courses': typeof PublicCoursesRoute
   '/': typeof PublicIndexRoute
   '/instructors/': typeof InstructorsIndexRoute
   '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
@@ -209,6 +225,7 @@ export interface FileRoutesByTo {
   '/register': typeof AuthRegisterRoute
   '/signin': typeof AuthSigninRoute
   '/about': typeof PublicAboutRoute
+  '/courses': typeof PublicCoursesRoute
   '/': typeof PublicIndexRoute
   '/instructors': typeof InstructorsIndexRoute
   '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
@@ -223,6 +240,7 @@ export interface FileRoutesById {
   '/_auth/register': typeof AuthRegisterRoute
   '/_auth/signin': typeof AuthSigninRoute
   '/_public/about': typeof PublicAboutRoute
+  '/_public/courses': typeof PublicCoursesRoute
   '/_public/': typeof PublicIndexRoute
   '/instructors/': typeof InstructorsIndexRoute
   '/students/$studentId/cart': typeof StudentsStudentIdCartRoute
@@ -237,6 +255,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/signin'
     | '/about'
+    | '/courses'
     | '/'
     | '/instructors/'
     | '/students/$studentId/cart'
@@ -247,6 +266,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/signin'
     | '/about'
+    | '/courses'
     | '/'
     | '/instructors'
     | '/students/$studentId/cart'
@@ -259,6 +279,7 @@ export interface FileRouteTypes {
     | '/_auth/register'
     | '/_auth/signin'
     | '/_public/about'
+    | '/_public/courses'
     | '/_public/'
     | '/instructors/'
     | '/students/$studentId/cart'
@@ -312,6 +333,7 @@ export const routeTree = rootRoute
       "filePath": "_public/route.tsx",
       "children": [
         "/_public/about",
+        "/_public/courses",
         "/_public/"
       ]
     },
@@ -331,6 +353,10 @@ export const routeTree = rootRoute
     },
     "/_public/about": {
       "filePath": "_public/about.tsx",
+      "parent": "/_public"
+    },
+    "/_public/courses": {
+      "filePath": "_public/courses.tsx",
       "parent": "/_public"
     },
     "/_public/": {
