@@ -4,6 +4,7 @@ import clock from "@/assets/icons/clock.svg";
 import favorite from "@/assets/icons/favorite.svg";
 import star from "@/assets/icons/star.svg";
 import user from "@/assets/icons/user.svg";
+import { cn } from "@/lib/utils";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { formatNumber } from "@/utils/formatNumber";
 import { Link } from "@tanstack/react-router";
@@ -25,6 +26,7 @@ export type TDetailHoverCardProps = {
   studentsCount: number;
   difficulty: string;
   duration: string;
+  isFarEnd: boolean;
   price: number;
   discount: number;
   benefits: string[];
@@ -41,6 +43,7 @@ const DetailHoverCard = ({
   studentsCount,
   difficulty,
   duration,
+  isFarEnd,
   price,
   discount,
   benefits,
@@ -52,7 +55,12 @@ const DetailHoverCard = ({
       ? instructor.split(" ")[0][0] + instructor.split(" ")[1][0]
       : instructor[0].repeat(2);
   return (
-    <div className="absolute left-[97%] top-[-30%] z-50 hidden max-w-[424px] bg-white py-5 shadow-sm group-hover:block">
+    <div
+      className={cn(
+        "absolute top-[-20%] z-50 hidden max-w-[424px] bg-white py-5 shadow-sm group-hover:block",
+        isFarEnd ? "right-[60%]" : "left-[60%]",
+      )}
+    >
       <div className="px-5">
         <Badge variant={badgeColor}>{badge}</Badge>
         <h3 className="mt-2.5 text-bodyXL500 text-gray-900">{title}</h3>

@@ -1,5 +1,6 @@
 import courseImg from "@/assets/images/courseImg1.png";
 import heroImg from "@/assets/images/heroImg.png";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Link } from "@tanstack/react-router";
 import { ComponentProps } from "react";
 import CategoryRect from "../Blocks/CategoryRect";
@@ -42,7 +43,7 @@ const Home = () => {
     "bg-gray-50",
     "bg-error-100",
   ];
-  function getRandomInt(max) {
+  function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
   }
   return (
@@ -67,11 +68,12 @@ const Home = () => {
           <img src={heroImg} alt="" className="" />
         </div>
       </section>
-      <section className="flex flex-col items-center justify-center gap-10 py-20">
+      <section className="mx-auto flex w-90 flex-col items-center justify-center gap-10 py-20">
         <h2 className="text-heading2">Browse top category</h2>
         <div className="grid grid-cols-4 gap-6">
           {[...Array(12)].map((_, i) => (
             <CategoryRect
+              key={i}
               title="Development"
               courses={120000}
               bgColor={
@@ -80,6 +82,25 @@ const Home = () => {
               icon=""
             />
           ))}
+        </div>
+        <div className="flex items-center gap-3 text-gray-700">
+          <p className="text-bodyM400">We have more category & subcategory.</p>
+          <Link
+            to="/categories"
+            className="flex items-center gap-2 text-bodyM500 text-primary-500"
+          >
+            Browse All <ArrowRightIcon className="size-6" />
+          </Link>
+        </div>
+      </section>
+      <section className="bg-gray-50 py-20">
+        <div className="mx-auto flex w-90 flex-col items-center justify-center gap-10">
+          <h2 className="text-heading2">Best selling courses</h2>
+          <div className="grid grid-cols-5 gap-6">
+            {[...Array(10)].map((_, i) => (
+              <CourseCard {...courseDetails} index={i} key={i} />
+            ))}
+          </div>
         </div>
       </section>
     </main>

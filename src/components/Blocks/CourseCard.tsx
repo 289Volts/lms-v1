@@ -14,6 +14,7 @@ type TCourseCardProps = {
   rating: string;
   studentsCount: number;
   grid: number;
+  index: number;
 };
 
 const GRID_LOOKUP: Record<number, string> = {
@@ -31,7 +32,9 @@ const CourseCard = ({
   rating,
   studentsCount,
   grid,
+  index,
 }: TCourseCardProps) => {
+  const isFarEnd = (index + 1) % grid === 0;
   return (
     <div className="group relative border border-gray-100 text-bodyM500">
       <DetailHoverCard
@@ -46,6 +49,7 @@ const CourseCard = ({
         duration={"test"}
         instructor={"test"}
         rating={"test"}
+        isFarEnd={isFarEnd}
         ratingsCount={1000}
         discount={10}
         avatar={""}
